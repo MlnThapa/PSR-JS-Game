@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    background:background-image: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
+}
+.main{
+    display: flex;
+    position:relative;
+    height:100vh;
+}
+p{
+position:absolute;
+top:45%;
+left:30%;
+}
+#pa{
+visibility:hidden;
+}
+#s{
+visibility:hidden;
+}
+#r{
+visibility:hidden;
+}
+.but{
+position: absolute;
+height:50px;
+width:150px;
+background:#8fc6c4;
+top:60%;
+left:45%;
+border-radius:5px;
+color:#fff;
+font-size: 2em;
+letter-spacing: 8px;
+box-shadow: 0px 0px 15px #000;
+}
+img{
+    height:100px;
+    width:100px;
+    transform:translate(-50%,-50%);
+}
+#pa1,#s2,#r3{
+position:absolute;
+top:45%;
+transition:0.2s ease;
+}
+#pa1{
+    left:60%;
+}
+#s2{
+    left:70%;
+}
+#r3{
+    left:80%;
+}
+.playAgain{
+    position: absolute;
+    height:50px;
+    width:150px;
+    background:#a3d49d;
+    top:5%;
+    left:45%;
+    color:#fff;
+    border-radius:5px;
+    box-shadow: 0px 0px 15px #000;
+    text-align: center;
+    font-weight: 50px;
+    letter-spacing: 8px;
+}
+#text{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    pointer-events: none;
+}
+</style>
+<body>
+    <div class="main">
+            <P id="pa"><img src="paper.svg" alt=""></P>
+            <P id="s"><img src="scssior.svg" alt=""></P>
+            <P id="r"><img src="rock.svg" alt=""></P>
+
+            <div class="but" onclick="clickme()"><p id="text">start</p></div> 
+
+                <div id="pa1" onclick="ppClick()"><img src="paper.svg" alt=""></div>
+                <div id="s2" onclick="psClick()"><img src="scssior.svg" alt=""></div>
+                <div id="r3" onclick="prClick()"><img src="rock.svg" alt=""></div>
+
+            <div class="playAgain" onClick="document.location.reload(true)"><p id="text"> Play Again</p></div>
+    </div>
+    
+</body>
+<script>
+    let pa = document.getElementById("pa");
+    let s = document.getElementById("s");
+    let r = document.getElementById("r");
+    let but=document.getElementsByClassName("but");
+    let getRandomNumber = function(){
+        let getRandom = Math.floor(Math.random()*3) + 1;
+        while(getRandom>3){
+            getRandom = Math.floor(Math.random()*3) + 1;
+        }
+        return getRandom; 
+    }
+    let clickme = function(){
+    let hold = getRandomNumber();
+    if(hold === 1){
+        pa.style.visibility="visible";
+        s.style.visibility="hidden";
+        r.style.visibility="hidden";
+        console.log(hold);
+    }
+    else if(hold === 2){
+        pa.style.visibility="hidden";
+        s.style.visibility="visible";
+        r.style.visibility="hidden";
+        console.log(hold);
+    }
+    else{
+        pa.style.visibility="hidden";
+        s.style.visibility="hidden";
+        r.style.visibility="visible";
+        console.log(hold);
+    }
+}
+
+
+let pp = document.getElementById("pa1");
+let ps = document.getElementById("s2");
+let pr = document.getElementById("r3");
+
+let ppClick = function(){
+    pp.style.left="70%";
+    ps.style.visibility="hidden";
+    pr.style.visibility="hidden";
+}
+let psClick = function(){
+    pp.style.visibility="hidden";
+    pr.style.visibility="hidden";
+}
+let prClick = function(){
+    pr.style.left="70%";
+    ps.style.visibility="hidden";
+    pp.style.visibility="hidden";
+}
+</script>
+</html>
